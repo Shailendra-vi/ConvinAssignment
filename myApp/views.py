@@ -21,8 +21,6 @@ CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def home(request):
     return JsonResponse({'message':'Welcome to Convin Google Calendar API', 'status':'200'})
 
-
-
 @api_view()
 def GoogleCalendarInitView(request):
     flow = InstalledAppFlow.from_client_secrets_file(os.path.join(CORE_DIR, "calendarauth.json"), SCOPES)
@@ -59,6 +57,6 @@ def GoogleCalendarRedirectView(request):
         return JsonResponse(listEvents, safe=False)
 
     except HttpError as error:
-        return HttpResponse('An error occurred: %s' % error)
+        return HttpResponse('Error occurred: %s' % error)
      
 
