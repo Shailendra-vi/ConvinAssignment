@@ -11,8 +11,6 @@ import json
 import datetime
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
-
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 @api_view()
@@ -40,9 +38,7 @@ def GoogleCalendarRedirectView(request):
         
         # Call Calendar API
         now = datetime.datetime.utcnow().isoformat() + 'Z'
-        events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=10, singleEvents=True,
-                                              orderBy='startTime').execute()
+        events_result = service.events().list(calendarId='primary', timeMin=now, maxResults=10, singleEvents=True, orderBy='startTime').execute()
         events = events_result.get('items', [])
 
         if not events:
