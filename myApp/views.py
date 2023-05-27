@@ -1,25 +1,23 @@
-from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.decorators import api_view
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 import os
 import json
 import datetime
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 @api_view()
 def home(request):
-    return JsonResponse({'message':'Welcome to Convin Google Calendar API', 'status':'200'})
+    return JsonResponse({'message':'Welcome to Convin Google Calendar', 'status':'200'})
 
 @api_view()
 def GoogleCalendarInitView(request):

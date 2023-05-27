@@ -13,7 +13,7 @@ This view will do two things
 
 
 
-## Run Locally
+## Run
 
 Clone the project
 
